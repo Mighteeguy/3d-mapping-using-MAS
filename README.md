@@ -1,6 +1,9 @@
 # 3-D Mapping using Multi-Agent Systems
 
-This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and [Hector Quadrotor](https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor) Repositories.
+Unmanned Aerial Vehicles (UAVs) autonomously explore and map an unknown environment using Frontier Exploration Algorithm and the Octomap Library. This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and [Hector Quadrotor](https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor) Repositories.
+
+## Demo
+![3D mapping using MAS](./video/28x 8th sem 3dm 4UAVs.mp4) 
 
 ## Prerequisites
 
@@ -26,7 +29,7 @@ sudo apt-get install ros-melodic-joy
 ## Usage
 
 1. After installing the [Prerequisites](##Prerequisites), setup a [catkin workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
-2. Clone this repository into your `~/catkin_ws`.
+2. Clone this repository into your `~/catkin_ws/src`.
 3. Run:
 ```bash
 cd ~/catkin_ws
@@ -35,13 +38,12 @@ source ~/catkin_ws/devel/setup.bash
 catkin_make
 source ~/catkin_ws/devel/setup.bash
 ```
-4. Uncomment the code for the UAVs you wish to spawn and comment out the code for all the other UAVs in the following two files:
-`full_indoors.launch` present in `/caltech_samaritan/launch/` and `spawn_two_quadrotors.launch` present in `/hector_quadrotor/hector_quadrotor_gazebo/launch`.
-5. Start the simulation using `roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoors environment. 
+4. Uncomment the code for the UAVs you wish to spawn and comment out the code for all the other UAVs in the following two files: 1. `full_indoors.launch` present in `/caltech_samaritan/launch/`, and 2. `spawn_two_quadrotors.launch` present in `/hector_quadrotor/hector_quadrotor_gazebo/launch`.
+5. Start the simulation using `roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoor environment. There are 3+ environments in this repository. The 3 main ones are a 2-room, 3-room, and a 4-room environment. 
 
 6. In new terminals, start each UAV's exploration scripts as: _rosrun caltech\_samaritan start\_exploration.py uav[digit] [number of UAVs]_.
 
-   E.g.: To run exploration scripts of UAV1, UAV2 and UAV3 (make sure they are uncommented in the full\_indoors.launch and the spawn\_two\_quadrotors.launch files), run the following commands in different terminals:
+   E.g.: To run exploration scripts of UAV1, UAV2 and UAV3 (make sure the UAVs are uncommented in the full\_indoors.launch and the spawn\_two\_quadrotors.launch files), run the following commands in different terminals:
    
    `rosrun caltech_samaritan start_exploration.py uav1 3`
 
@@ -50,59 +52,6 @@ source ~/catkin_ws/devel/setup.bash
    `rosrun caltech_samaritan start_exploration.py uav3 3`
 
 
-
-# my initial edits
-
-
-1. [OctoMap](http://wiki.ros.org/octomap) is used to generate the 3D occupancy
-   grid. `octomap_server` is used to interface OctoMap with ROS. Use `$ sudo apt-get install ros-melodic-octomap`, and `$ sudo apt-get install ros-melodic-octomap-ros` to install.
-
-2. You'll need to install the [OctoMap RViz
-   plugin](https://github.com/OctoMap/octomap_rviz_plugins) by running the `$ sudo apt-get install ros-melodic-octomap-rviz-plugins` command. Without it, occupancy grid
-   visualisations in RViz will not work.
-
-3. To control the drone manually, you would have to install the `ros-melodic-teleop-twist-keyboard` package from `$ sudo apt-get install ros-melodic-teleop-twist-keyboard` command and then run
-   `teleop_twist_keyboard teleop_twist_keyboard.py`. 
-   
-4. Robot navigation is handled using the standard ROS navigation stack, namely `move_base`, so make sure you have that installed. Additionally, [TEB local planner](http://wiki.ros.org/teb_local_planner) is used, which can be installed from `$ sudo apt-get install ros-melodic-teb-local-planner`. 
-   
-5. `ros_numpy` is required, it can be installed from `$ sudo apt-get install ros-melodic-ros-numpy`.
-6. Run the following commands in your terminal to install packages required for UAV flight:
-```bash
-sudo apt-get install ros-melodic-ros-control
-sudo apt-get install ros-melodic-gazebo-ros-control
-sudo apt-get install ros-melodic-unique-identifier
-sudo apt-get install ros-melodic-geographic-info
-sudo apt-get install ros-melodic-laser-geometry
-sudo apt-get install ros-melodic-tf-conversions
-sudo apt-get install ros-melodic-tf2-geometry-msgs
-sudo apt-get install ros-melodic-joy
-```
-
-
-## Usage
-
-1. Make sure you have the [Necessary packages](#Necessary packages) installed.
-2. Clone this repo into your [catkin
-   workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
-3. Source appropriate ROS files in your Bash instance, i.e. run `source
-   /opt/ros/melodic/setup.bash` and `source ~/catkin_ws/devel/setup.bash`.
-4. Run `catkin_make` in `~/catkin_ws/` and `source
-   ~/catkin_ws/devel/setup.bash` again.
-5. Start the simulation using `$ roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoors environment.
-
-   In this file, uncomment the UAVs you wish to spawn and comment the other UAVs. 
-6. (Optional) If you want to control the drone manually, you can use the script mentioned in the previous section.
-7. (Optional) If you want to test the navigation stack manually, you can do the following: First, using teleop
-   instructions from the step above, fly around for a bit to make sure the navigation stack has something to work with;
-   Second, start the hover script using `$ rosrun caltech_samaritan force_hover.py`. Now you can issue "2D Nav Goals"
-   using Rviz interface to see the navigation stack in action.
-8. In new terminals, start the multiple UAV's exploration scripts as `$ rosrun caltech_samaritan start_exploration.py uav[digit] [number of UAVs]`, e.g.: To run exploration scripts of UAV1, UAV2 and UAV3 (make sure they are uncommented in the full\_indoors.launch and the spawn\_two\_quadrotors.launch files), run the following commands:
-```bash
-rosrun caltech_samaritan start_exploration.py uav1 3
-rosrun caltech_samaritan start_exploration.py uav2 3
-rosrun caltech_samaritan start_exploration.py uav3 3
-```
 
 
 ## Caltech Samaritan
