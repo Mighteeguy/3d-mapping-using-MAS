@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="start_exploration_uav1" pkg="caltech_samaritan" type="start_exploration.py" args="uav1 2" />
+  
+  <node name="start_exploration_uav2" pkg="caltech_samaritan" type="start_exploration.py" args="uav2 2" />
+    
+</launch>

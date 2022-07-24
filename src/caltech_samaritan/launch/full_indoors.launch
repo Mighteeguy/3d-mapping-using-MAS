@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <rosparam param="use_sim_time">true</rosparam>
+
+    <!-- Start Gazebo with wg world running in (max) realtime -->
+    <include file="$(find hector_gazebo_worlds)/launch/start.launch">
+        <arg name="gui" value="true"/>
+        <arg name="world" value="$(find caltech_samaritan)/worlds/uav_indoor_room.world"/>
+
+        <!-- For 2-room environment, use: value="$(find caltech_samaritan)/worlds/uav_indoor_room_2bhk.world -->
+        <!-- For 3-room environment, use: value="$(find caltech_samaritan)/worlds/uav_indoor_room_3bhk.world -->
+        <!-- For 4-room environment, use: value="$(find caltech_samaritan)/worlds/uav_indoor_room.world -->
+    </include>
+
+
+    <include file="$(find hector_quadrotor_gazebo)/launch/spawn_two_quadrotors.launch"/>
+
+
+    <!-- Start rviz visualization with preset config -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find caltech_samaritan)/rviz/depth_slam_octomap_with_multiple_quads.rviz" required="true" output="screen"/>
+
+
+<!-- Uncomment the UAVs you wish to spawn and comment the rest. 
+    Note the double hiphens (-) in "call -wait" command. XML would throw an error if double hiphens are used in a commented code. Be sure to add the hiphen if that piece of code is uncommented   -->
+
+<!-- uav1 -->
+    <node name="topic_tools_throttle_uav1" pkg="topic_tools" type="throttle"
+        args="messages /uav1/camera/depth/points 2.0 /camera/depth/points" >
+    </node>
+    <node name="topic_tools_throttle_cdp_to_uav1" pkg="topic_tools" type="throttle"
+        args="messages /camera/depth/points 2.0 /uav1/camera/depth/points" >
+    </node>
+    <node name="topic_tools_throttle_map_to_uav1" pkg="topic_tools" type="throttle"
+        args="messages /map_2d 10.0 /uav1/map" >
+      </node>
+
+    <node pkg="rosservice" type="rosservice" name="uav1_motors_activator"
+          args="call --wait /uav1/enable_motors &quot;enable: true&quot;"/>
+
+
+<!-- uav2 -->
+    <node name="topic_tools_throttle_uav2" pkg="topic_tools" type="throttle"
+        args="messages /uav2/camera/depth/points 2.0 /camera/depth/points" >
+      </node>
+    <node name="topic_tools_throttle_cdp_to_uav2" pkg="topic_tools" type="throttle"
+        args="messages /camera/depth/points 2.0 /uav2/camera/depth/points" >
+      </node>
+    <node name="topic_tools_throttle_map_to_uav2" pkg="topic_tools" type="throttle"
+        args="messages /map_2d 10.0 /uav2/map" >
+      </node>
+
+    <node pkg="rosservice" type="rosservice" name="uav2_motors_activator"
+          args="call --wait /uav2/enable_motors &quot;enable: true&quot;"/>
+
+
+<!-- uav3 -->
+<!-- 
+    <node name="topic_tools_throttle_uav3" pkg="topic_tools" type="throttle"
+        args="messages /uav3/camera/depth/points 2.0 /camera/depth/points" >
+      </node>
+    <node name="topic_tools_throttle_cdp_to_uav3" pkg="topic_tools" type="throttle"
+        args="messages /camera/depth/points 2.0 /uav3/camera/depth/points" >
+      </node>
+    <node name="topic_tools_throttle_map_to_uav3" pkg="topic_tools" type="throttle"
+        args="messages /map_2d 10.0 /uav3/map" >
+      </node>
+
+    <node pkg="rosservice" type="rosservice" name="uav3_motors_activator"
+          args="call -wait /uav3/enable_motors &quot;enable: true&quot;"/>
+ -->
+
+<!-- uav4 -->
+<!-- 
+    <node name="topic_tools_throttle_uav4" pkg="topic_tools" type="throttle"
+        args="messages /uav4/camera/depth/points 2.0 /camera/depth/points" >
+      </node>
+    <node name="topic_tools_throttle_cdp_to_uav4" pkg="topic_tools" type="throttle"
+        args="messages /camera/depth/points 2.0 /uav4/camera/depth/points" >
+      </node>
+    <node name="topic_tools_throttle_map_to_uav4" pkg="topic_tools" type="throttle"
+        args="messages /map_2d 10.0 /uav4/map" >
+      </node>
+
+    <node pkg="rosservice" type="rosservice" name="uav4_motors_activator"
+          args="call -wait /uav4/enable_motors &quot;enable: true&quot;"/>
+
+ -->
+
+<!-- uav0 -->
+   <!--  <node name="topic_tools_throttle_map_to_uav0" pkg="topic_tools" type="throttle"
+        args="messages /map_2d 2.0 /uav0/map" >
+      </node>
+
+    <node pkg="rosservice" type="rosservice" name="uav0_motors_activator"
+          args="call -wait /uav0/enable_motors &quot;enable: true&quot;"/>
+ -->
+
+
+</launch>

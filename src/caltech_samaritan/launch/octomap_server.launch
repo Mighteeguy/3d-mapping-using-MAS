@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+
+    <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" output="screen">
+        <param name="resolution" value="0.5"/> 
+
+        <!-- fixed map frame (set to 'map' if SLAM or localization running!) -->
+        <param name="frame_id" type="string" value="world"/>
+
+        <!-- maximum range to integrate (speedup!) -->
+        <param name="sensor_model/max_range" value="15.0"/>
+
+        <param name="filter_ground" value="true" />
+
+        <!-- cut off the floor to make 2d projection better -->
+        <param name="occupancy_min_z" value="-1000.0"/> 
+
+        <!-- data source to integrate (PointCloud2) -->
+        <remap from="cloud_in" to="/$(arg tf_prefix)/camera/depth/points"/>
+	    <param name="base_frame_id" value="world" />
+        
+        <!-- remap projected_map to map -->
+        <remap from="projected_map" to="map"/>
+    </node>
+
+    <node pkg="tf" type="static_transform_publisher" name="map_to_basefp_tf_publisher" args="0 0 0 0 0 0 1 map world 50" />
+
+</launch>
