@@ -20,8 +20,8 @@ packages are required:
 4. Robot navigation is handled using the standard ROS navigation stack, namely `move_base`, so make sure you have that installed. Additionally, [TEB local planner](http://wiki.ros.org/teb_local_planner) is used, which can be installed from `$ sudo apt-get install ros-melodic-teb-local-planner`. 
    
 5. `ros_numpy` is required, it can be installed from `$ sudo apt-get install ros-melodic-ros-numpy`.
-6. Run the following commands to install packages required for UAV flight:
-```
+6. Run the following commands in your terminal to install packages required for UAV flight:
+```bash
 sudo apt-get install ros-melodic-ros-control
 sudo apt-get install ros-melodic-gazebo-ros-control
 sudo apt-get install ros-melodic-unique-identifier
