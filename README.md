@@ -38,9 +38,11 @@ In this file, uncomment the UAVs you wish to spawn and comment the other UAVs.
    Second, start the hover script using `$ rosrun caltech_samaritan force_hover.py`. Now you can issue "2D Nav Goals"
    using Rviz interface to see the navigation stack in action.
 8. In new terminals, start the multiple UAV's exploration scripts as `$ rosrun caltech_samaritan start_exploration.py uav[digit] [number of UAVs]`, e.g.: To run exploration scripts of UAV1, UAV2 and UAV3 (make sure they are uncommented in the full\_indoors.launch and the spawn\_two\_quadrotors.launch files), run the following commands:
-`$ rosrun caltech_samaritan start_exploration.py uav1 3
+```bash
+$ rosrun caltech_samaritan start_exploration.py uav1 3
 $ rosrun caltech_samaritan start_exploration.py uav2 3
-$ rosrun caltech_samaritan start_exploration.py uav3 3`
+$ rosrun caltech_samaritan start_exploration.py uav3 3
+```
 
 
 
