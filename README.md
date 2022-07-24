@@ -1,6 +1,6 @@
-This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and Hector Quadrotor Repository.
-
 # 3-D Mapping using Multi-Agent Systems
+
+This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and Hector Quadrotor Repository.
 
 ## Prerequisites
 
@@ -20,6 +20,17 @@ packages are required:
 4. Robot navigation is handled using the standard ROS navigation stack, namely `move_base`, so make sure you have that installed. Additionally, [TEB local planner](http://wiki.ros.org/teb_local_planner) is used, which can be installed from `$ sudo apt-get install ros-melodic-teb-local-planner`. 
    
 5. `ros_numpy` is required, it can be installed from `$ sudo apt-get install ros-melodic-ros-numpy`.
+6. Run the following commands to install packages required for UAV flight:
+```
+sudo apt-get install ros-melodic-ros-control
+sudo apt-get install ros-melodic-gazebo-ros-control
+sudo apt-get install ros-melodic-unique-identifier
+sudo apt-get install ros-melodic-geographic-info
+sudo apt-get install ros-melodic-laser-geometry
+sudo apt-get install ros-melodic-tf-conversions
+sudo apt-get install ros-melodic-tf2-geometry-msgs
+sudo apt-get install ros-melodic-joy
+```
 
 ## Usage
 
