@@ -2,10 +2,27 @@
 
 This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and [Hector Quadrotor](https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor) Repositories.
 
-## Prerequisites
+## Necessary packages
 
-This project was developed for ROS Melodic (Ubuntu 18.04). The following
-packages are required:
+This project was developed for ROS Melodic (Ubuntu 18.04). Run the following commands on your terminal to install the necessary packages:
+
+```bash
+sudo apt-get install ros-melodic-octomap
+sudo apt-get install ros-melodic-octomap-ros
+sudo apt-get install ros-melodic-octomap-rviz-plugins
+sudo apt-get install ros-melodic-teb-local-planner
+sudo apt-get install ros-melodic-ros-numpy
+sudo apt-get install ros-melodic-ros-control
+sudo apt-get install ros-melodic-gazebo-ros-control
+sudo apt-get install ros-melodic-unique-identifier
+sudo apt-get install ros-melodic-geographic-info
+sudo apt-get install ros-melodic-laser-geometry
+sudo apt-get install ros-melodic-tf-conversions
+sudo apt-get install ros-melodic-tf2-geometry-msgs
+sudo apt-get install ros-melodic-joy
+sudo apt-get install ros-melodic-teleop-twist-keyboard  <!-- In case you wish to manually control the UAV.-->
+```
+
 
 1. [OctoMap](http://wiki.ros.org/octomap) is used to generate the 3D occupancy
    grid. `octomap_server` is used to interface OctoMap with ROS. Use `$ sudo apt-get install ros-melodic-octomap`, and `$ sudo apt-get install ros-melodic-octomap-ros` to install.
@@ -34,7 +51,7 @@ sudo apt-get install ros-melodic-joy
 
 ## Usage
 
-1. Make sure you have the [prerequisites](#prerequisites) installed.
+1. Make sure you have the [Necessary packages](#Necessary packages) installed.
 2. Clone this repo into your [catkin
    workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
 3. Source appropriate ROS files in your Bash instance, i.e. run `source
