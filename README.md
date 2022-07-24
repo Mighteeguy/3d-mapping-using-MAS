@@ -35,8 +35,8 @@ source ~/catkin_ws/devel/setup.bash
 catkin_make
 source ~/catkin_ws/devel/setup.bash
 ```
-4. Uncomment the code for the UAVs you wish to spawn and comment out the code for all the other UAVs in the following two files present in `/caltech_samaritan/launch/`:
-`full_indoors.launch` and `spawn_two_quadrotors.launch`.
+4. Uncomment the code for the UAVs you wish to spawn and comment out the code for all the other UAVs in the following two files:
+`full_indoors.launch` present in `/caltech_samaritan/launch/` and `spawn_two_quadrotors.launch` present in `/hector_quadrotor/hector_quadrotor_gazebo/launch`.
 5. Start the simulation using `roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoors environment. 
 
 6. In new terminals, start each UAV's exploration scripts as: _rosrun caltech\_samaritan start\_exploration.py uav[digit] [number of UAVs]_.
