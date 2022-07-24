@@ -20,7 +20,6 @@ sudo apt-get install ros-melodic-laser-geometry
 sudo apt-get install ros-melodic-tf-conversions
 sudo apt-get install ros-melodic-tf2-geometry-msgs
 sudo apt-get install ros-melodic-joy
-sudo apt-get install ros-melodic-teleop-twist-keyboard  [In case you wish to manually control the UAV]
 ```
 
 
