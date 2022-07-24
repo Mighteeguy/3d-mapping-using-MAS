@@ -35,9 +35,9 @@ source ~/catkin_ws/devel/setup.bash
 catkin_make
 source ~/catkin_ws/devel/setup.bash
 ```
-4. Uncomment the UAVs you wish to spawn and comment out all the other UAVs in the following two files:
+4. Uncomment the code for the UAVs you wish to spawn and comment out the code for all the other UAVs in the following two files present in `/caltech_samaritan/launch/`:
 `full_indoors.launch` and `spawn_two_quadrotors.launch`.
-5. Start the simulation using `roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoors environment (if you want to try outdoors, use `full_outdoors.launch`). 
+5. Start the simulation using `roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoors environment. 
 
 6. In new terminals, start each UAV's exploration scripts as: _rosrun caltech\_samaritan start\_exploration.py uav[digit] [number of UAVs]_.
 
@@ -89,8 +89,9 @@ sudo apt-get install ros-melodic-joy
    /opt/ros/melodic/setup.bash` and `source ~/catkin_ws/devel/setup.bash`.
 4. Run `catkin_make` in `~/catkin_ws/` and `source
    ~/catkin_ws/devel/setup.bash` again.
-5. Start the simulation using `$ roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoors environment (if you want to try outdoors, use `full_outdoors.launch`).
-In this file, uncomment the UAVs you wish to spawn and comment the other UAVs. 
+5. Start the simulation using `$ roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoors environment.
+
+   In this file, uncomment the UAVs you wish to spawn and comment the other UAVs. 
 6. (Optional) If you want to control the drone manually, you can use the script mentioned in the previous section.
 7. (Optional) If you want to test the navigation stack manually, you can do the following: First, using teleop
    instructions from the step above, fly around for a bit to make sure the navigation stack has something to work with;
