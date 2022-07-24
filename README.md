@@ -138,4 +138,4 @@ packages are required:
 8. Start the exploration script with `rosrun caltech_samaritan start_exploration.py`.
 9. ???
 10. Profit!
-
+ 
