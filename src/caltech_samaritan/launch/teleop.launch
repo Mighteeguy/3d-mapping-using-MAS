@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-
-    <node pkg="caltech_samaritan" type="quadrotor_teleop.py" name="quadrotor_teleop" output="screen"/>
-
-</launch>
