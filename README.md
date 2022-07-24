@@ -1,6 +1,6 @@
 # 3-D Mapping using Multi-Agent Systems
 
-This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and Hector Quadrotor Repository.
+This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and [Hector Quadrotor](https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor) Repositories.
 
 ## Prerequisites
 
