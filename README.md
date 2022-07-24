@@ -2,7 +2,7 @@ This repository uses the fundamentals of the [Caltech Samaritan](https://github.
 
 # 3-D Mapping using Multi-Agent Systems
 
-# Prerequisites
+## Prerequisites
 
 This project was developed for ROS Melodic (Ubuntu 18.04). The following
 packages are required:
@@ -21,7 +21,7 @@ packages are required:
    
 5. `ros_numpy` is required, it can be installed from `$ sudo apt-get install ros-melodic-ros-numpy`.
 
-Usage
+## Usage
 
 1. Make sure you have the [prerequisites](#prerequisites) installed.
 2. Clone this repo into your [catkin
@@ -39,16 +39,16 @@ In this file, uncomment the UAVs you wish to spawn and comment the other UAVs.
    using Rviz interface to see the navigation stack in action.
 8. In new terminals, start the multiple UAV's exploration scripts as `$ rosrun caltech_samaritan start_exploration.py uav[digit] [number of UAVs]`, e.g.: To run exploration scripts of UAV1, UAV2 and UAV3 (make sure they are uncommented in the full\_indoors.launch and the spawn\_two\_quadrotors.launch files), run the following commands:
 ```bash
-$ rosrun caltech_samaritan start_exploration.py uav1 3
-$ rosrun caltech_samaritan start_exploration.py uav2 3
-$ rosrun caltech_samaritan start_exploration.py uav3 3
+rosrun caltech_samaritan start_exploration.py uav1 3
+rosrun caltech_samaritan start_exploration.py uav2 3
+rosrun caltech_samaritan start_exploration.py uav3 3
 ```
 
 
 
 
 
-# Caltech Samaritan
+## Caltech Samaritan
 
 Autonomous SLAM & exploration using drones, a project for Caltech's *ME 134
 Autonomy* class.
@@ -56,7 +56,7 @@ Autonomy* class.
 detailed description of the project and the approach used. This repository can
 be cloned as a ROS package.
 
-# Demo
+## Demo
 
 There are two videos showing the whole setup in action: [exploring indoor
 environment](https://www.youtube.com/watch?v=5fQLEVJwjwE) and [exploring
