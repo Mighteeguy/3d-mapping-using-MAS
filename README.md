@@ -2,12 +2,6 @@
 
 Unmanned Aerial Vehicles (UAVs) autonomously explore and map an unknown environment using Frontier Exploration Algorithm and the Octomap Library. This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and [Hector Quadrotor](https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor) Repositories.
 
-## Demo
-3-D mapping using 4 UAVs:
-
-<video src='https://user-images.githubusercontent.com/43675847/180644628-e7be5256-4254-4283-82dd-4a96f02d983d.mp4' width=180/>
-
-
 
 ## Prerequisites
 
@@ -138,4 +132,13 @@ packages are required:
 8. Start the exploration script with `rosrun caltech_samaritan start_exploration.py`.
 9. ???
 10. Profit!
+
+
+
+## Demo
+3-D mapping using 4 UAVs
+
+<video src='https://user-images.githubusercontent.com/43675847/180644628-e7be5256-4254-4283-82dd-4a96f02d983d.mp4' width=180 />
+
+
  
