@@ -2,14 +2,15 @@
 
 This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and [Hector Quadrotor](https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor) Repositories.
 
-## Necessary packages
+## Prerequisites
 
 This project was developed for ROS Melodic (Ubuntu 18.04). Run the following commands on your terminal to install the necessary packages:
 
-```bash
+```Bash
 sudo apt-get install ros-melodic-octomap
 sudo apt-get install ros-melodic-octomap-ros
 sudo apt-get install ros-melodic-octomap-rviz-plugins
+sudo apt-get install ros-melodic-navigation
 sudo apt-get install ros-melodic-teb-local-planner
 sudo apt-get install ros-melodic-ros-numpy
 sudo apt-get install ros-melodic-ros-control
