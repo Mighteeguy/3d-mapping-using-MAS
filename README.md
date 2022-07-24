@@ -4,7 +4,8 @@ Unmanned Aerial Vehicles (UAVs) autonomously explore and map an unknown environm
 
 ## Demo
 ![3D mapping using MAS](./video/28x 8th sem 3dm 4UAVs.mp4) 
-https://user-images.githubusercontent.com/43675847/180644628-e7be5256-4254-4283-82dd-4a96f02d983d.mp4
+<video src='https://user-images.githubusercontent.com/43675847/180644628-e7be5256-4254-4283-82dd-4a96f02d983d.mp4' width=180/>
+
 
 
 ## Prerequisites
