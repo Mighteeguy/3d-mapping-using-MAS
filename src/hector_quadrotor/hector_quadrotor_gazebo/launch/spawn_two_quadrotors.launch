@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+
+<launch>
+   <arg name="model" default="$(find hector_quadrotor_description)/urdf/quadrotor.gazebo.xacro" />
+
+
+<!-- Uncomment the UAVs you wish to spawn and comment the rest -->
+
+   <group ns="uav1">
+     <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor_with_kinect.launch">
+       <arg name="name" value="uav1" />
+       <arg name="tf_prefix" value="uav1" />
+       <arg name="model" value="$(arg model)" />
+       <arg name="y" value="-2" /> 
+       <arg name="x" value="-2" /> 
+     </include>
+
+     <!-- Start the navigation stack -->
+     <include file="$(find caltech_samaritan)/launch/navigation.launch">
+       <arg name="tf_prefix" value="uav1" />
+       <arg name="odom_topic" value="ground_truth/state" />
+       <arg name="depth_topic" value="camera/depth/points" />
+       <arg name="laser_topic" value="camera/scan" />
+       <arg name="target_frame" value="camera_link"/>
+       <arg name="planned_cmd_vel_topic" value="planned_cmd_vel" />
+     </include>
+   </group>
+
+
+
+   <group ns="uav2">
+     <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor_with_kinect.launch">
+       <arg name="name" value="uav2" />
+       <arg name="tf_prefix" value="uav2" />
+       <arg name="model" value="$(arg model)" />
+       <arg name="y" value="2" />
+       <arg name="x" value="2" />
+     </include>
+
+     <include file="$(find caltech_samaritan)/launch/navigation.launch">
+       <arg name="tf_prefix" value="uav2" />
+       <arg name="odom_topic" value="ground_truth/state" />
+       <arg name="depth_topic" value="camera/depth/points" />
+       <arg name="laser_topic" value="camera/scan" />
+       <arg name="target_frame" value="camera_link"/>
+       <arg name="planned_cmd_vel_topic" value="planned_cmd_vel" />
+     </include>
+   </group>
+
+
+<!-- 
+   <group ns="uav3">
+     <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor_with_kinect.launch">
+       <arg name="name" value="uav3" />
+       <arg name="tf_prefix" value="uav3" />
+       <arg name="model" value="$(arg model)" />
+       <arg name="y" value="2" />
+       <arg name="x" value="-2" />
+     </include>
+
+     <include file="$(find caltech_samaritan)/launch/navigation.launch">
+       <arg name="tf_prefix" value="uav3" />
+       <arg name="odom_topic" value="ground_truth/state" />
+       <arg name="depth_topic" value="camera/depth/points" />
+       <arg name="laser_topic" value="camera/scan" />
+       <arg name="target_frame" value="camera_link"/>
+       <arg name="planned_cmd_vel_topic" value="planned_cmd_vel" />
+     </include>
+   </group> -->
+
+<!-- 
+   <group ns="uav4">
+     <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor_with_kinect.launch">
+       <arg name="name" value="uav4" />
+       <arg name="tf_prefix" value="uav4" />
+       <arg name="model" value="$(arg model)" />
+       <arg name="y" value="-2" />
+       <arg name="x" value="2" />
+     </include>
+
+     <include file="$(find caltech_samaritan)/launch/navigation.launch">
+       <arg name="tf_prefix" value="uav4" />
+       <arg name="odom_topic" value="ground_truth/state" />
+       <arg name="depth_topic" value="camera/depth/points" />
+       <arg name="laser_topic" value="camera/scan" />
+       <arg name="target_frame" value="camera_link"/>
+       <arg name="planned_cmd_vel_topic" value="planned_cmd_vel" />
+     </include>
+   </group>
+
+ -->
+<!-- 
+   <group ns="uav0">
+     <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor_with_kinect.launch">
+       <arg name="name" value="uav0" />
+       <arg name="tf_prefix" value="uav0" />
+       <arg name="model" value="$(arg model)" />
+       <arg name="y" value="-4" />
+       <arg name="x" value="-2.0" />
+       <!- <arg name="yaw" value="1.72"/> -->
+       <!-- <remap from="uav2/camera/depth/points" to="/camera/depth/points"/> ->
+     </include>
+
+     
+     <include file="$(find caltech_samaritan)/launch/navigation.launch">
+       <!- <arg name="name" value="uav0" /> ->
+       <arg name="tf_prefix" value="uav0" />
+       <arg name="odom_topic" value="ground_truth/state" />
+       <arg name="depth_topic" value="camera/depth/points" />
+       <arg name="laser_topic" value="camera/scan" />
+       <arg name="target_frame" value="camera_link"/>                 
+       <arg name="planned_cmd_vel_topic" value="planned_cmd_vel" />
+     </include>
+      <include file="$(find caltech_samaritan)/launch/octomap_server.launch" >
+      <arg name="tf_prefix" value="uav0" />
+     </include> ->
+   </group> -->
+
+
+   <!-- Start OctoMap server to generate voxel occupancy grid and a projected 2d occupancy grid -->
+   <include file="$(find caltech_samaritan)/launch/octomap_server_master.launch" >
+   </include>
+
+   <node pkg="tf" type="static_transform_publisher" name="map_tf_publisher" args="0 0 0 0 0 0 1 map world 50" />
+
+</launch>

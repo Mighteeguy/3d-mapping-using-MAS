@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="topic_tools_throttle_uav1" pkg="topic_tools" type="throttle"
+      args="messages /uav1/camera/depth/points 2.0 /camera/depth/points" >
+    <!-- <remap from="/camera/depth/points" to="/uav1/camera/depth/points" /> -->
+  </node>
+
+  <node name="topic_tools_throttle_uav2" pkg="topic_tools" type="throttle"
+      args="messages /uav2/camera/depth/points 2.0 /camera/depth/points" >
+    <!-- <remap from="/camera/depth/points" to="/uav2/camera/depth/points" /> -->
+    </node>
+
+
+    <node name="topic_tools_throttle_cdp_to_uav1" pkg="topic_tools" type="throttle"
+      args="messages /camera/depth/points 2.0 /uav1/camera/depth/points" >
+        <!-- <remap from='/camera/depth/points' to='uav1/camera/depth/points' /> -->
+  </node>
+  <node name="topic_tools_throttle_cdp_to_uav2" pkg="topic_tools" type="throttle"
+      args="messages /camera/depth/points 2.0 /uav2/camera/depth/points" >
+        <!-- <!- <remap from='/camera/depth/points' to='uav2/camera/depth/points' /> -> -->
+    </node>
+
+    
+</launch>
