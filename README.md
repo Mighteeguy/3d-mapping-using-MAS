@@ -23,7 +23,7 @@ Create a [workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace), a
 
 ## Running the simulation 
 ### 3-D mapping using 2 UAVs (Quick start)
-1. Run the simulation using 
+1. Run the simulation using: 
 ```
 roslaunch caltech_samaritan full_indoors.launch
 ```
