@@ -3,25 +3,21 @@
 Unmanned Aerial Vehicles (UAVs) autonomously explore and map an unknown environment using Frontier Exploration Algorithm and the Octomap Library. This repository uses the fundamentals of the [Caltech Samaritan](https://github.com/TimboKZ/caltech_samaritan/blob/master/README.md) and [Hector Quadrotor](https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor) Repositories.
 
 
-## Prerequisites
+## Installation
 
-This project was developed for ROS Melodic (Ubuntu 18.04). Run the following commands on your terminal to install the necessary packages:
+This project was developed for ROS Melodic (Ubuntu 18.04). 
+Run the following command on your terminal to install the necessary dependancies:
 
-```Bash
-sudo apt-get install ros-melodic-octomap
-sudo apt-get install ros-melodic-octomap-ros
-sudo apt-get install ros-melodic-octomap-rviz-plugins
-sudo apt-get install ros-melodic-navigation
-sudo apt-get install ros-melodic-teb-local-planner
-sudo apt-get install ros-melodic-ros-numpy
-sudo apt-get install ros-melodic-ros-control
-sudo apt-get install ros-melodic-gazebo-ros-control
-sudo apt-get install ros-melodic-unique-identifier
-sudo apt-get install ros-melodic-geographic-info
-sudo apt-get install ros-melodic-laser-geometry
-sudo apt-get install ros-melodic-tf-conversions
-sudo apt-get install ros-melodic-tf2-geometry-msgs
-sudo apt-get install ros-melodic-joy
+```bash
+sudo apt-get install ros-melodic-octomap ros-melodic-octomap-ros ros-melodic-octomap-rviz-plugins ros-melodic-navigation ros-melodic-teb-local-planner ros-melodic-ros-numpy ros-melodic-ros-control ros-melodic-gazebo-ros-control ros-melodic-unique-identifier ros-melodic-geographic-info ros-melodic-laser-geometry ros-melodic-tf-conversions ros-melodic-tf2-geometry-msgs ros-melodic-joy
+```
+
+Create a [workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace), and clone and compile this package.
+```bash
+  cd ${YOUR_WORKSPACE_PATH}/src
+  git clone 
+  cd ../ 
+  catkin_make
 ```
 
 ## Usage
