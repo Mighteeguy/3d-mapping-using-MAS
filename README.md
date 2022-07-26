@@ -12,38 +12,48 @@ Run the following command on your terminal to install the necessary dependancies
 sudo apt-get install ros-melodic-octomap ros-melodic-octomap-ros ros-melodic-octomap-rviz-plugins ros-melodic-navigation ros-melodic-teb-local-planner ros-melodic-ros-numpy ros-melodic-ros-control ros-melodic-gazebo-ros-control ros-melodic-unique-identifier ros-melodic-geographic-info ros-melodic-laser-geometry ros-melodic-tf-conversions ros-melodic-tf2-geometry-msgs ros-melodic-joy
 ```
 
-Create a [workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace), and clone and compile this package.
+Create a [workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace), and clone and compile this package (using ssh here):
 ```bash
   cd ${YOUR_WORKSPACE_PATH}/src
-  git clone 
+  git clone git@github.com:Mighteeguy/3d-mapping-using-MAS.git
   cd ../ 
   catkin_make
+  source devel/setup.bash
 ```
 
-## Usage
-
-1. After installing the [Prerequisites](##Prerequisites), setup a [catkin workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
-2. Clone this repository into your `~/catkin_ws/src`.
-3. Run:
-```bash
-cd ~/catkin_ws
-source /opt/ros/melodic/setup.bash
-source ~/catkin_ws/devel/setup.bash
-catkin_make
-source ~/catkin_ws/devel/setup.bash
+## Running the simulation 
+### 3-D mapping using 2 UAVs (Quick start)
+1. Run the simulation using 
 ```
-4. Uncomment the code for the UAVs you wish to spawn and comment out the code for all the other UAVs in the following two files: 1. `full_indoors.launch` present in `/caltech_samaritan/launch/`, and 2. `spawn_two_quadrotors.launch` present in `/hector_quadrotor/hector_quadrotor_gazebo/launch`.
-5. Start the simulation using `roslaunch caltech_samaritan full_indoors.launch`. This will initialize Gazebo with a sample indoor environment. There are 3+ environments in this repository. The 3 main ones are a 2-room, 3-room, and a 4-room environment. 
+roslaunch caltech_samaritan full_indoors.launch
+```
+This will initialize Gazebo with a sample 4-room environment. 
 
-6. In new terminals, start each UAV's exploration scripts as: _rosrun caltech\_samaritan start\_exploration.py uav[digit] [number of UAVs]_.
+2. To start each UAV's exploration scripts, run the following commands in different terminals as: _rosrun caltech\_samaritan start\_exploration.py uav[digit] [number of UAVs]_:
+
+   `source devel/setup.bash && rosrun caltech_samaritan start_exploration.py uav1 2`
+
+   `source devel/setup.bash && rosrun caltech_samaritan start_exploration.py uav2 2`
+
+### 3-D mapping using multple UAVs
+To run the simulation with an increased (or decreased) number of UAVs,
+1. Uncomment the code for the UAVs you wish to spawn and comment out the code for all the other UAVs in the following two files: 1. [full_indoors.launch](caltech_samaritan/launch/full_indoors.launch), and 2. [spawn_two_quadrotors.launch](hector_quadrotor/hector_quadrotor_gazebo/launch/spawn_two_quadrotors.launch).
+2. Run the simulation using 
+```
+roslaunch caltech_samaritan full_indoors.launch
+```
+This will initialize Gazebo with a sample 4-room environment. There are 3+ environments in this repository. The 3 main ones are a 4-room, 3-room, and a 2-room environment. The environment can be changed from the [full_indoors.launch](caltech_samaritan/launch/full_indoors.launch) file.
+
+3. In new terminals, start each UAV's exploration scripts as: _rosrun caltech\_samaritan start\_exploration.py uav[digit] [number of UAVs]_.
 
    E.g.: To run exploration scripts of UAV1, UAV2 and UAV3 (make sure the UAVs are uncommented in the full\_indoors.launch and the spawn\_two\_quadrotors.launch files), run the following commands in different terminals:
    
-   `rosrun caltech_samaritan start_exploration.py uav1 3`
+   `source devel/setup.bash && rosrun caltech_samaritan start_exploration.py uav1 3`
 
-   `rosrun caltech_samaritan start_exploration.py uav2 3`
+   `source devel/setup.bash && rosrun caltech_samaritan start_exploration.py uav2 3`
 
-   `rosrun caltech_samaritan start_exploration.py uav3 3`
+   `source devel/setup.bash && rosrun caltech_samaritan start_exploration.py uav3 3`
+
 
 
 
